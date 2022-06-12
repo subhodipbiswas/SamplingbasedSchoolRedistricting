@@ -14,7 +14,7 @@ class MCMC:
     The base class for the performing MCMC sampling.
     """
 
-    def __init__(self, args=None, solution=None, seed=123456789, algo='SFCAA'):
+    def __init__(self, args=None, solution=None, seed=123456789, algo='BAA'):
         self.args = args
         self.seed = seed
         self.solution = solution
@@ -141,10 +141,10 @@ class MCMC:
                 initial_state=initial_partition,
                 total_steps=self.number_of_flips
             )
-        elif self.algo == 'AAI':
+        elif self.algo == 'AIO':
             '''
             single flip contiguous always accept improving (objective)
-            This is based on the SFCIOAA model by replacing the improving_objective_bound by a always accept improving
+            This is based on the BCAA model by replacing the improving_objective_bound by a always accept improving
             acceptance condition. This helps to impart a greedy nature to the algorithm.
             '''
             # Initialize the chain
@@ -202,22 +202,12 @@ class Sampling(MCMC):
         print('The initial partition of run {} has functional value: {:.4f}'.format(run, best_func_val))
 
         t_start = time.time()
-        updates, co_occurence = 0, pd.DataFrame(0, index=polygons.index, columns=polygons.index)
 
         for f, partition in enumerate(chain.with_progress_bar()):
             # Updating the best solution found so far
             if partition['objective'] <= best_func_val:
                 best_partition = partition
                 best_func_val = partition['objective']
-
-            if (f + 1) % 1000 == 0:
-                updates += 1
-                for dist, nodes in partition.assignment.parts.items():
-                    for a, b in itertools.combinations(nodes, 2):
-                        if a > b:
-                            co_occurence.at[a, b] = co_occurence.at[a, b] + 1
-                        else:
-                            co_occurence.at[b, a] = co_occurence.at[b, a] + 1
 
         t_elapsed = (time.time() - t_start) / 60.0  # measures in minutes
         termination = "end of chain reached"
@@ -226,17 +216,6 @@ class Sampling(MCMC):
         print('The final partition of run {} has functional value: {:.4f}\n'.format(run, best_func_val))
         util = Utils(self.args)
         final = self.part_to_sol(best_partition, util)
-
-        # Write the actual and the normalized co-occurence matrices
-        write_path = util.create_dir(state, 'co_occurences', initialization, self.algo)
-        co_occurence.to_csv(write_path + './co_occurence{}_{}_{}.csv'.format(run, attributes['Level'], self.algo))
-
-        for a, row in co_occurence.iterrows():
-            for b, r in co_occurence.iterrows():
-                if co_occurence[b][a] > 0.0:
-                    co_occurence.at[a, b] = co_occurence.at[a, b] * 1.0 / updates
-
-        co_occurence.to_csv(write_path + './norm_co_occurence{}_{}_{}.csv'.format(run, attributes['Level'], self.algo))
 
         # Settings variables of the run
         alg_params = util.get_params(w1=w, w2=1-w,

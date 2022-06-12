@@ -108,7 +108,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose",
                         help="don't print status messages to stdout")
-    parser.add_argument("-a", "--algo", type=str, default="BAA")  # district: lcps, fcps
+    parser.add_argument("-a", "--algo", type=str, default="BAA")  # algorithms: BAA, BCAA, AIO
     parser.add_argument("-d", "--district", type=str, default="lcps")  # district: lcps, fcps
     parser.add_argument("-l", "--level", type=str, default="ES")  # school levels: ES, MS, HS
     parser.add_argument("-r", "--runs", type=int, default=25)  # number of runs to be simulated
