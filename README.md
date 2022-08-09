@@ -98,15 +98,19 @@ deactivate
 ## Citation
 If you use this data/code for your work, please consider citing the following article(s):
 ```
-@misc{biswas2022sampling,
-  doi = {10.48550/ARXIV.2206.03703},
-  url = {https://arxiv.org/abs/2206.03703},
-  author = {Biswas, Subhodip and Chen, Fanglan and Chen, Zhiqian and Lu, Chang-Tien and Ramakrishnan, Naren},
-  keywords = {Artificial Intelligence (cs.AI), Numerical Analysis (math.NA), Applications (stat.AP), FOS: Computer and information sciences, FOS: Computer and information sciences, FOS: Mathematics, FOS: Mathematics, I.2.1; I.5.3; I.2.8; G.3; G.1.6},
-  title = {Sampling-based techniques for designing school boundaries},
-  publisher = {arXiv},  
-  year = {2022},  
-  copyright = {Creative Commons Attribution 4.0 International}
+@article{biswas2022memetic,
+author = {Biswas, Subhodip and Chen, Fanglan and Chen, Zhiqian and Lu, Chang-Tien and Ramakrishnan, Naren},
+title = {Memetic Algorithms for Spatial Partitioning Problems},
+year = {2022},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+issn = {2374-0353},
+url = {https://doi.org/10.1145/3544779},
+doi = {10.1145/3544779},
+note = {Just Accepted},
+journal = {ACM Trans. Spatial Algorithms Syst.},
+month = {May},
+keywords = {Redistricting, Metaheuristic, Spatial Optimization}
 }
 
 
@@ -119,5 +123,5 @@ If you use this data/code for your work, please consider citing the following ar
 }
 ```
 ## Help
-Should you have queries, please reach out to me at subhodipbiswas@vt.edu
+Should you have queries, please reach out to me at subhodip@vt.edu
 
