@@ -114,6 +114,16 @@ keywords = {Redistricting, Metaheuristic, Spatial Optimization}
 }
 
 
+
+@article{biswas2022sampling,
+  title={Sampling-based techniques for designing school boundaries},
+  author={Biswas, Subhodip and Chen, Fanglan and Chen, Zhiqian and Lu, Chang-Tien and Ramakrishnan, Naren},
+  journal={arXiv preprint arXiv:2206.03703},
+  year={2022}
+}
+
+
+
 @phdthesis{biswas2022phd,
   title={Spatial Optimization Techniques for School Redistricting},
   author={Biswas, Subhodip},
