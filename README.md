@@ -97,6 +97,7 @@ deactivate
 
 ## Citation
 If you use this data/code for your work, please consider citing the following article(s):
+
 ```
 @article{biswas2022memetic,
 author = {Biswas, Subhodip and Chen, Fanglan and Chen, Zhiqian and Lu, Chang-Tien and Ramakrishnan, Naren},
@@ -109,8 +110,7 @@ url = {https://doi.org/10.1145/3544779},
 doi = {10.1145/3544779},
 note = {Just Accepted},
 journal = {ACM Trans. Spatial Algorithms Syst.},
-month = {May},
-keywords = {Redistricting, Metaheuristic, Spatial Optimization}
+month = {May}
 }
 
 
